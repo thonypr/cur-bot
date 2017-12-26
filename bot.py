@@ -18,7 +18,7 @@ def handle_start(message):
     amount = text.split(u' ')[0]
     if type(amount) is float or int:
         try:
-            if text.split(u' ')[1]:
+            if text.split(u' ').count == 2:
                 if has_dollar_names(text):
                     byn = get_byn_amount(amount=amount, currency=u"USD")
                     eur_rate = get_byn_amount(amount=1, currency=u"EUR")
@@ -38,6 +38,9 @@ def handle_start(message):
                     eur_amount = round(int(amount) / eur_rate, 2)
                     bot.send_message(to, u"🇺🇸 {0}\n🇧🇾{1}\n🇪🇺{2}".format(usd_amount, amount, eur_amount))
                     print (u"Message to{0}:\n🇺🇸 {1}\n🇧🇾{2}\n🇪🇺{3}".format(to, usd_amount, amount, eur_amount))
+            else:
+                bot.send_message(to, u"Неверный ввод. Введите в формате Число Валюта")
+                print (u"Message to{0}:\nНеверный ввод. Введите в формате Число Валюта".format(to))
         except ValueError:
             bot.send_message(to, u"Неверный ввод. Введите в формате Число Валюта")
             print (u"Message to{0}:\nНеверный ввод. Введите в формате Число Валюта".format(to))
