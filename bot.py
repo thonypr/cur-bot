@@ -30,14 +30,14 @@ def handle_start(message):
                     usd_rate = get_byn_amount(amount=1, currency=u"USD")
                     usd_amount = round(byn / usd_rate, 2)
                     bot.send_message(to, u"🇺🇸 {0}\n🇧🇾{1}\n🇪🇺{2}".format(usd_amount, byn, amount))
-                    print (u"Message to{0}:\n🇺🇸 {1}\n🇧🇾{2}\n🇪🇺{3}".format(to, amount, byn, eur_amount))
+                    print (u"Message to{0}:\n🇺🇸 {1}\n🇧🇾{2}\n🇪🇺{3}".format(to, usd_amount, byn, amount))
                 else:
                     usd_rate = get_byn_amount(amount=1, currency=u"USD")
                     usd_amount = round(int(amount) / usd_rate, 2)
                     eur_rate = get_byn_amount(amount=1, currency=u"EUR")
                     eur_amount = round(int(amount) / eur_rate, 2)
                     bot.send_message(to, u"🇺🇸 {0}\n🇧🇾{1}\n🇪🇺{2}".format(usd_amount, amount, eur_amount))
-                    print (u"Message to{0}:\n🇺🇸 {1}\n🇧🇾{2}\n🇪🇺{3}".format(to, amount, byn, eur_amount))
+                    print (u"Message to{0}:\n🇺🇸 {1}\n🇧🇾{2}\n🇪🇺{3}".format(to, usd_amount, amount, eur_amount))
         except ValueError:
             bot.send_message(to, u"Неверный ввод. Введите в формате Число Валюта")
             print (u"Message to{0}:\nНеверный ввод. Введите в формате Число Валюта".format(to))
