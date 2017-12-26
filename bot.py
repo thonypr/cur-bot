@@ -18,7 +18,8 @@ def handle_start(message):
     amount = text.split(u' ')[0]
     if type(amount) is float or int:
         try:
-            if text.split(u' ').count == 2:
+            print (text.split(u' ').__len__())
+            if text.split(u' ').__len__() == 2:
                 if has_dollar_names(text):
                     byn = get_byn_amount(amount=amount, currency=u"USD")
                     eur_rate = get_byn_amount(amount=1, currency=u"EUR")
